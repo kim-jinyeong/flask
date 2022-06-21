@@ -45,7 +45,7 @@ class Solution:
         # 차이를 손실값으로 설정합니다.
 
         cost = tf.reduce_mean(tf.pow(X - decoder, 2))
-        optimizer = tf.keras.optimizers.RMSprop(learning_rate).minimize(cost)
+        optimizer = tf.keras.optimizers.RMSprop(learning_rate).minimize(cost,var_list=[W_decode,b_decode],tape=tf.GradientTape())
 
         # ******
         # 신경망 모델 학습
